@@ -1,0 +1,48 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<header class=container>
+	<div id="top-header">
+		<div id="logo">
+			<img id = "img_logo" src="{{ url_for('static', filename='todo.png') }}">
+		</div>
+		<nav>
+			<ul>
+		<li><a href="{{ url_for('add_task_page') }}"><p>Add Task</p></a></li>
+		<li><a href="{{ url_for('delete_task_page') }}"><p>Delete Task</p></a></li>
+		<li><a href="{{ url_for('update_task_page') }}"><p>Update Task</p></a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn"><p>{{ session['username'] }}</p></a>
+          <div class="dropdown-content">
+          <a href="{{ url_for('settings_page') }}"><p>Settings</p></a>
+          <a href="{{ url_for('log_in_page') }}"><p>Log out</p></a>
+          </div>
+        </li>
+			</ul>
+		</nav>
+	</div>
+	<div id="headingbar">
+		<span>To Do List</span>
+		<p>Main Page</p>
+	</div>
+	</header>
+<body  id = 'theme' class = 'lightmode'>
+<div style="height:15%;"></div>
+{% for message in get_flashed_messages() %}
+    {{ message }}
+{% endfor %}
+</body>
+<script>
+	const mode = '<p>{{ session["mode"] }}</p>';
+	if(mode == '<p>Dark</p>'){
+		document.getElementById('img_logo').src= "{{ url_for('static', filename='todo_dark_mode.png') }}";
+		document.getElementById('theme').classList.add('darkmode')
+		document.getElementById('theme').classList.remove('lightmode')
+	}
+	else if(mode == '<p>Light</p>'){
+		document.getElementById('img_logo').src= "{{ url_for('static', filename='todo.png') }}";
+		document.getElementById('theme').classList.add('lightmode')
+		document.getElementById('theme').classList.remove('darkmode')
+	}
+
+</script>
+</html>

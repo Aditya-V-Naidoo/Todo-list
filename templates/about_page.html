@@ -1,0 +1,20 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<header class=container>
+	<div id="top-header">
+		<div id="logo">
+			<img src="{{ url_for('static', filename='todo.png') }}">
+		</div>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('log_in_page') }}"><p>Login</p></a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="headingbar">
+		<span>To Do List</span>
+		<p>Contact us</p>
+	</div>
+	</header>
+	<body id = 'theme' class = 'lightmode'></body>
+  </html>

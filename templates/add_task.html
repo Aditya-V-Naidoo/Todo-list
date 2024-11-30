@@ -1,0 +1,54 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<header class=container>
+	<div id="top-header">
+		<div id="logo">
+			<img src="{{ url_for('static', filename='todo.png') }}" />
+		</div>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('tasks_page') }}"><p>Back to Tasks</p></a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="headingbar">
+		<span>To Do List</span>
+		<p>Add New Task</p>
+	</div>
+	</header>
+	<body  id = 'theme' class = 'lightmode'>
+		<div style="height:110px; width:100%"></div>
+			<form name="addtask" action="/add_task_page" enctype="multipart/form-data" method="POST">
+			<table>
+				<tr><td><label for = "task">Task:</label></td><td><input type="text" id = "task" name="task">
+				</td></tr>
+				<tr><td><label for = "description">Task Description:</label></td><td><input type="text" id = "description" name="description"></td></tr>
+				<tr><td><label for = "progress">Task Progress:</label>
+				<td><select id="progress" name="progress">
+						<option value="To Do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Done">Done</option>
+				</select></td></tr>
+				<tr><td><button type= "submit" id = "add_task" name="add_task"><p>Add</p></button></td></tr>
+			</table>
+			</form>
+		</div>
+		{%- for message in get_flashed_messages() %}
+		{{ message }}
+		{%- endfor %}
+		</body>
+		<script>
+			const mode = '<p>{{ session["mode"] }}</p>';
+			if(mode == '<p>Dark</p>'){
+				document.getElementById('img_logo').src= "{{ url_for('static', filename='todo_dark_mode.png') }}";
+				document.getElementById('theme').classList.add('darkmode')
+				document.getElementById('theme').classList.remove('lightmode')
+			}
+			else if(mode == '<p>Light</p>'){
+				document.getElementById('img_logo').src= "{{ url_for('static', filename='todo.png') }}";
+				document.getElementById('theme').classList.add('lightmode')
+				document.getElementById('theme').classList.remove('darkmode')
+			}
+
+		</script>
+  </html>

@@ -1,0 +1,35 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<header class=container>
+	<div id="top-header">
+		<div id="logo">
+			<img src="{{ url_for('static', filename='todo.png') }}">
+		</div>
+		<nav>
+			<ul>
+        <li><a href="{{ url_for('log_in_page') }}"><p>Back to Login</p></a></li>
+        <li><a href="{{ url_for('about_page') }}"><p>About</p></a></li>
+        <li><a href="{{ url_for('create_account_page') }}"><p>Create Account</p></a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="headingbar">
+		<span>To Do List</span>
+		<p>Security</p>
+	</div>
+	</header>
+  <body  id = 'theme' class = 'lightmode'>
+	<div style="height:110px; width:100%"></div>
+		<form id="login_form" name="login_form" method="POST">
+			<table>
+				<tr><td><label for = "uname">Username:</label></td><td><input type="text" id = "username" name="username" value=""></td></tr>
+				<tr><td><label for = "email">Email :</label></td><td><input type="text" id = "email" name="email" value=""></td></tr>
+				<tr><td><button type= "submit" id = "forgot_password" name="forgot_password"><p>next</p></button></td></tr>
+			</table>
+		</form>
+	</div>
+	{%- for message in get_flashed_messages() %}
+	{{ message }}
+	{%- endfor %}
+	</body>
+</html>

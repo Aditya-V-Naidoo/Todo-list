@@ -1,0 +1,37 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<header class=container>
+	<div id="top-header">
+		<div id="logo">
+			<img src="{{ url_for('static', filename='todo.png') }}">
+		</div>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('log_in_page') }}"><p>Back to Login</p></a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="headingbar">
+		<span>To Do List</span>
+		<p>Create New User</p>
+	</div>
+	</header>
+	<body  id = 'theme' class = 'lightmode'>
+	<div style="height:110px; width:100%"></div>
+		<form name="createuser" action="/create_account_page" enctype="multipart/form-data" method="POST">
+			<table>
+				<tr><td><label for = "uname">Username:</label></td>
+					<td><input type="text" id = "username" name="username" value=""></td><td><label for = "email_id">Email:</label></td><td><input type="text" id = "email" name="email" value=""></td></tr>
+				<tr><td><label for = "pass">Password:</label></td><td><input type="password" id = "password" name="password" value=""></td><td><label for = "conpass">Confirm Password:</label></td>
+					<td><input type="password" id = "con_password" name="con_password" value=""></td></tr>
+				<tr><td><label for = "SQ">Security Question:</label></td><td><input type="text" id = "SQ" name="SQ" value=""></td><td><label for = "AK">Answer Key:</label></td>
+					<td><input type="text" id = "AK" name="AK" value=""></td></tr>
+				<tr><td><button type= "submit" id = "create" name="create"><p>Create Account</p></button></td></tr>
+			</table>
+		</form>
+	</div>
+	{%- for message in get_flashed_messages() %}
+	{{ message }}
+	{%- endfor %}
+</body>
+  </html>
