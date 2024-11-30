@@ -454,4 +454,4 @@ def create_account_page():
     return render_template('create_account_page.html')
 # Running the Application
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=1703)
+    app.run(debug=False, host='0.0.0.0')
