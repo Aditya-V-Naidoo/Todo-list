@@ -1,0 +1,23 @@
+Create Database Todo;
+
+use Todo;
+
+Create table Todo_list (Task_id int not null, User_id int not null, Username varchar(50), Task varchar(100), Description varchar(500), Progress varchar(100));
+
+Insert into Todo_list(Task_id, User_id, Username, Task, Description, Progress) values (103, 203, 'Aditya', 'Walk', 'Take Rio for a walk', 'To do');
+Insert into Todo_list(Task_id, User_id, Username, Task, Description, Progress) values (313, 204, 'Vehaam', 'Finish Assignment', 'Finish your calculus Assignment', 'In progress');
+Insert into Todo_list(Task_id, User_id, Username, Task, Description, Progress) values (108, 203, 'Aditya', 'Programming', 'Write a python code to store data on SQL', 'In progress');
+Insert into Todo_list(Task_id, User_id, Username, Task, Description, Progress) values (312, 204, 'Vehaam', 'Take Medications', 'Take your prescribed Medications', 'Done');
+
+Alter table Todo_list
+Add primary key (Task_id);
+
+Update Todo_list
+Set  Username = 'Aditya_V_Naidoo'
+where User_id = 203 
+
+Select * from Todo_list
+Order by progress; 
+
+Select * from Todo_list
+Where progress = 'In progress'
